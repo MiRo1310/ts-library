@@ -1,7 +1,6 @@
 import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import pluginVue from "eslint-plugin-vue";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
@@ -29,9 +28,8 @@ export default defineConfig([
     },
   },
   tseslint.configs.recommended,
-  pluginVue.configs["flat/essential"],
   {
-    files: ["**/*.{js,mjs,cjs,ts,tsx,vue}"],
+    files: ["**/*.{js,mjs,cjs,ts,tsx}"],
     rules: {
       eqeqeq: "error",
       "no-console": "warn",
@@ -42,18 +40,7 @@ export default defineConfig([
       semi: ["error", "always"],
       quotes: ["error", "double"],
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
-      "vue/multi-word-component-names": "off",
-      "vue/no-unused-components": "warn",
-      "vue/no-mutating-props": "error",
-      "vue/no-unused-properties": [
-        "error",
-        {
-          groups: ["props"],
-          deepData: false,
-          ignorePublicMembers: false,
-        },
-      ],
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],      
       complexity: ["error", 10],
     },
     languageOptions: {

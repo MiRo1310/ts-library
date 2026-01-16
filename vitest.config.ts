@@ -8,7 +8,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json", "html"],
     },
-    include: ["src/**/*.{test,spec}.{js,ts}"],
+    include: ["src/test/**/*.{test,spec}.{js,ts}"],
     exclude: ["node_modules", "dist", ".idea", ".git", ".cache"],
   },
 });
