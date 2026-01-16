@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 22.x, 24.x]
+        node-version: [ 22.x, 24.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - uses: actions/checkout@v4
@@ -22,13 +22,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: 'yarn'
       - run: yarn install --frozen-lockfile  && yarn lint
   build:
+    # Nur ausführen, wenn ein Push auf main erfolgt (z. B. nach Merge)
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main')
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 22.x, 24.x]
+        node-version: [ 22.x, 24.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - uses: actions/checkout@v4
@@ -36,8 +38,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: yarn install --frozen-lockfile  && yarn build      
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile  && yarn build
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
   audit:
     runs-on: ubuntu-latest
     steps:
@@ -46,12 +54,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
-          cache: 'npm'
+          cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - name: Audit dependencies
         run: |
           yarn audit || echo "::warning::yarn audit hat Probleme gefunden"
-        continue-on-error: false 
+        continue-on-error: false
   vitest:
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +68,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
-          cache: 'npm'
+          cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - name: Vitest tests
         run: yarn run test
