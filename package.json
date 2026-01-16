@@ -1,6 +1,6 @@
 {
   "name": "@michaelroling/ts-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@vitest/coverage-v8": "4.0.17",
+    "cpx2": "^8.0.0",
     "eslint": "^9.39.2",
     "globals": "^17.0.0",
     "jiti": "^2.6.1",
@@ -30,7 +31,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint --ext .ts src --fix",
-    "build": "tsc --build",
+    "build": "tsc -p tsconfig.json && npx cpx2 \"src/types/**/*.d.ts\" dist/types",
     "prepublishOnly": "yarn build"
   },
   "files": [
