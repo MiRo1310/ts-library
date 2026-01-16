@@ -1,4 +1,5 @@
 import "../../src/prototype/array";
+import "../../src/types/array";
 import { it, expect, describe } from "vitest";
 
 describe("Array", () => {
