@@ -1,2 +1,3 @@
 import "./prototype/array";
-export { toJSON, parseJSON } from "./json";
+export { toJsonString, toJSON } from "./json";
+export {deepCopy, isFalsy, isDefined, isTruthy, } from "./lib";
