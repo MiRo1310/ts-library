@@ -8,3 +8,10 @@ it('should get first element', () => {
    
    expect (firstElement).toBe(1);
 })
+
+it('should get undefined, no element in array', () => {
+   const array = [];
+   const firstElement = array.mrFirst();
+   
+   expect (firstElement).toBe(undefined);
+})
