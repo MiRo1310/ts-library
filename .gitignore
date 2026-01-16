@@ -4,4 +4,4 @@
 .idea/
 tsconfig.tsbuildinfo
 
-.dist/
+/dist/
