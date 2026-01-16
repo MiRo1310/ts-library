@@ -1,10 +1,13 @@
 {
-  "name": "ts-library",
+  "name": "@michaelroling/ts-library",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "assertion-error": "^2.0.1",
     "chai": "^6.2.2",
