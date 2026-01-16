@@ -1,4 +1,3 @@
-export function greet(name = 'world') {
-    return `hello ${name}`;
+export function helloWorld() {
+    return "Hello, World!";
 }
-export default greet;
