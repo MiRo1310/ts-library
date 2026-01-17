@@ -24,9 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: yarn install --frozen-lockfile  && yarn lint
-  build:
-    # Nur ausführen, wenn ein Push auf main erfolgt (z. B. nach Merge)
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main')
+  build:  
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -39,8 +37,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile  && yarn build
+      - run: yarn install --frozen-lockfile
+      - name: Build mit Ausgabe (main)
+        # Nur ausführen, wenn ein Push auf main erfolgt (z. B. nach Merge)
+        if: github.ref == 'refs/heads/main'
+        run: yarn run build
+      - name: Nur Type-Check (andere Branches)
+        if: github.ref != 'refs/heads/main'
+        run: yarn run build --noEmit
       - name: Upload dist artifact
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
         with:
           name: dist
