@@ -32,6 +32,7 @@
     "coverage": "vitest run --coverage",
     "lint": "eslint --ext .ts src --fix",
     "build": "tsc -p tsconfig.json && npx cpx2 \"src/types/**/*.d.ts\" dist/types",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "prepublishOnly": "yarn build"
   },
   "files": [

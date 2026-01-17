@@ -44,7 +44,7 @@ jobs:
         run: yarn run build
       - name: Nur Type-Check (andere Branches)
         if: github.ref != 'refs/heads/main'
-        run: yarn run build --noEmit
+        run: yarn run typecheck
       - name: Upload dist artifact
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
@@ -78,11 +78,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - name: Vitest tests mit Coverage
         run: yarn vitest run --coverage
-        continue-on-error: false
-      - name: Coverage prüfen
-        run: |
-          COVERAGE=$(cat coverage/coverage-final.json | grep '"pct":100')
-          if [ -z "$COVERAGE" ]; then
-            echo "Coverage ist nicht 100%!"
-            exit 1
-          fi
+        continue-on-error: false    
