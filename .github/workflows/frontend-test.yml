@@ -70,6 +70,13 @@ jobs:
           node-version: 22.x
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - name: Vitest tests
-        run: yarn run test
+      - name: Vitest tests mit Coverage
+        run: yarn vitest run --coverage
         continue-on-error: false
+      - name: Coverage prüfen
+        run: |
+          COVERAGE=$(cat coverage/coverage-final.json | grep '"pct":100')
+          if [ -z "$COVERAGE" ]; then
+            echo "Coverage ist nicht 100%!"
+            exit 1
+          fi

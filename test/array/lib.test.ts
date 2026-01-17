@@ -1,5 +1,5 @@
 import { deepCopy, isDefined, isFalsy, isTruthy } from "../../src";
-import {describe, it,  expect} from "vitest";
+import {describe, it,  expect, vi} from "vitest";
 
 describe("isTruthy", () => {
   it("should return true for truthy values", () => {
@@ -74,11 +74,24 @@ describe("deepCopy", () => {
     expect(copy).to.not.equal(original); 
   });
 
-  it("should return undefined for circular references", () => {
+  it("should return undefined for circular references, with callback", () => {
     const circular: any = {};
     circular.self = circular;
-
+    let e: any = null;
+    const copy = deepCopy(circular,(error)=>{e =  error;} );
+    expect(copy).toBeUndefined();
+    expect(e).toBeDefined();
+  });
+  
+  it("should return undefined for circular references", () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    
+    const circular: any = {};
+    circular.self = circular;
+  
     const copy = deepCopy(circular);
     expect(copy).toBeUndefined();
+    expect(errorSpy).toHaveBeenCalledTimes(1);
+    errorSpy.mockRestore(); 
   });
 });
