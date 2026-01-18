@@ -35,3 +35,7 @@ String.prototype.mrDecomposeText = function (this: string, first: string, second
 String.prototype.mrStringReplacer = function (this: string, valueToReplace: StringReplacerObj[]): string {
   return valueToReplace.reduce((acc, { val, newValue }) => acc.replace(val, newValue ?? ""), this);
 };
+
+String.prototype.mrFirstLetterToUpperCase = function (this: string): string {
+  return this.slice(0, 1).toUpperCase() + this.slice(1);
+};

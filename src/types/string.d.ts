@@ -3,13 +3,15 @@ declare global {
     /**  Replaces all occurrences of a substring with a new string. */
     mrReplaceAll(searchValue: string, replaceValue: string): string;
     /**  Checks if the string is empty or contains only whitespace characters. */
-    mrIsEmptyString (this: string): boolean
-/**  Checks if the string represents a boolean value ('true' or 'false'). */
-    mrIsBooleanString(this: string): boolean
+    mrIsEmptyString(this: string): boolean;
+    /**  Checks if the string represents a boolean value ('true' or 'false'). */
+    mrIsBooleanString(this: string): boolean;
     /** Decomposes the string into parts based on two search strings. */
-    mrDecomposeText(this: string, first: string, second: string): DecomposeTextReturnType
-/** Replaces multiple specified substrings with their corresponding new values. */
-    mrStringReplacer(this: string, valueToReplace: StringReplacerObj[]): string
+    mrDecomposeText(this: string, first: string, second: string): DecomposeTextReturnType;
+    /** Replaces multiple specified substrings with their corresponding new values. */
+    mrStringReplacer(this: string, valueToReplace: StringReplacerObj[]): string;
+    /** Converts the first letter of the string to uppercase. */
+    mrFirstLetterToUpperCase(this: string): string;
   }
 }
 

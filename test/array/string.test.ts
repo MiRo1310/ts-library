@@ -129,3 +129,10 @@ describe("decomposeText", () => {
     });
   });
 });
+
+it("should check fistLetterToUpperCase", () => {
+  expect("hello world".mrFirstLetterToUpperCase()).to.equal("Hello world");
+  expect("Hello world".mrFirstLetterToUpperCase()).to.equal("Hello world");
+  expect("h".mrFirstLetterToUpperCase()).to.equal("H");
+  expect("".mrFirstLetterToUpperCase()).to.equal("");
+});
