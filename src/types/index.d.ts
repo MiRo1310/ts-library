@@ -1,2 +1,4 @@
 import "./array";
-export declare function helloWorld(): string;
+import "./json";
+import "./lib";
+import "./string";
