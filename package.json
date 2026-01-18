@@ -5,6 +5,13 @@
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -36,7 +43,7 @@
     "prepublishOnly": "yarn build"
   },
   "files": [
-    "dist",
+    "/dist",
     "README.md",
     "LICENSE"
   ],
