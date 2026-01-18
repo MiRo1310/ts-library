@@ -1,19 +1,26 @@
 declare global {
   interface String {
     /**  Replaces all occurrences of a substring with a new string. */
-    mrReplaceAll(searchValue: string, replaceValue: string): string;
+    mrReplaceAll: MrReplaceAll;
     /**  Checks if the string is empty or contains only whitespace characters. */
-    mrIsEmptyString(this: string): boolean;
+    mrIsEmptyString: MrIsEmptyString;
     /**  Checks if the string represents a boolean value ('true' or 'false'). */
-    mrIsBooleanString(this: string): boolean;
+    mrIsBooleanString: MrIsBooleanString;
     /** Decomposes the string into parts based on two search strings. */
-    mrDecomposeText(this: string, first: string, second: string): DecomposeTextReturnType;
+    mrDecomposeText: MrDecomposeText;
     /** Replaces multiple specified substrings with their corresponding new values. */
-    mrStringReplacer(this: string, valueToReplace: StringReplacerObj[]): string;
+    mrStringReplacer: MrStringReplacer;
     /** Converts the first letter of the string to uppercase. */
-    mrFirstLetterToUpperCase(this: string): string;
+    mrFirstLetterToUpperCase: MrFirstLetterToUpperCase;
   }
 }
+
+export type MrReplaceAll = (this: string, searched: string, replacement: string) => string;
+export type MrIsEmptyString = (this: string) => boolean;
+export type MrIsBooleanString = (this: string) => boolean;
+export type MrDecomposeText = (this: string, first: string, second: string) => DecomposeTextReturnType;
+export type MrStringReplacer = (this: string, valueToReplace: StringReplacerObj[]) => string;
+export type MrFirstLetterToUpperCase = (this: string) => string;
 
 export interface DecomposeTextReturnType {
   startIndex: number;

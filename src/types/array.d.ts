@@ -1,25 +1,35 @@
 declare global {
-  interface Array<T> {
+  interface Array {
     /** Gets the first element of the array. */
-    mrFirst(): T | undefined;
+    mrFirst: MrFirst;
     /** Gets the last element of the array. */
-    mrLast(): T | undefined;
+    mrLast: MrLast;
     /** Gets the nth element of the array. */
-    mrNth(n: number): T | undefined;
+    mrNth: MrNth;
     /** Removes duplicate primitive values from the array. */
-    mrRemoveDuplicates(this: Primitive[]): Primitive[];
+    mrRemoveDuplicates: MrRemoveDuplicates;
     /** Trims whitespace from string elements in the array. */
-    mrTrimItems(this: Primitive[]): Primitive[];
+    mrTrimItems: MrTrimItems;
     /** Sums up the numeric elements in the array. */
-    mrSum(this: number[]): number;
+    mrSum: MrSum;
     /** Calculates the average of the numeric elements in the array. */
-    mrAverage(this: number[]): number;
+    mrAverage: MrAverage;
     /** Finds the minimum numeric value in the array. */
-    mrMin(this: number[]): number | undefined;
+    mrMin: MrMin;
     /** Finds the maximum numeric value in the array. */
-    mrMax(this: number[]): number | undefined;
+    mrMax: MrMax;
   }
 }
+
+export type MrFirst = <T>(this: T[]) => T | undefined;
+export type MrLast = <T>(this: T[]) => T | undefined;
+export type MrNth = <T>(this: T[], n: number) => T | undefined;
+export type MrRemoveDuplicates = (this: Primitive[]) => Primitive[];
+export type MrTrimItems = (this: Primitive[]) => Primitive[];
+export type MrSum = (this: number[]) => number;
+export type MrAverage = (this: number[]) => number;
+export type MrMin = (this: number[]) => number | undefined;
+export type MrMax = (this: number[]) => number | undefined;
 
 export type Primitive = string | number | boolean;
 export {};
