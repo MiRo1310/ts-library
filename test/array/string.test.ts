@@ -136,3 +136,43 @@ it("should check fistLetterToUpperCase", () => {
   expect("h".mrFirstLetterToUpperCase()).to.equal("H");
   expect("".mrFirstLetterToUpperCase()).to.equal("");
 });
+
+describe("remove duplicated spaces", () => {
+  it("should return do nothing is not exist", () => {
+    expect("Test".mrRemoveDuplicatedSpaces()).to.be.equal("Test");
+  });
+
+  it("should trim and remove duplicated spaces", () => {
+    expect(" Test  Test   ".mrRemoveDuplicatedSpaces()).to.be.equal("Test Test");
+  });
+
+  it("should trim and remove duplicated spaces", () => {
+    expect("  Test   ".mrRemoveDuplicatedSpaces()).to.be.equal("Test");
+  });
+});
+
+describe("single quotes to double quotes", () => {
+  it("should return do nothing is not exist", () => {
+    expect("Test".mrSingleQuotesToDoubleQuotes()).to.be.equal("Test");
+  });
+
+  it("should replace all single quotes", () => {
+    // prettier-ignore
+    expect("'Test':''Test'".mrSingleQuotesToDoubleQuotes()).to.be.equal("\"Test\":\"\"Test\"");
+  });
+
+  it("should replace all single quotes", () => {
+    // prettier-ignore
+    expect("'Test':''Test' \"test\"".mrSingleQuotesToDoubleQuotes()).to.be.equal("\"Test\":\"\"Test\" \"test\"");
+  });
+});
+
+describe("remove quotes", () => {
+  it("should return do nothing is not exist", () => {
+    expect("Test".mrRemoveQuotes()).to.be.equal("Test");
+  });
+
+  it("should replace all quotes", () => {
+    expect("'Test'\":'\"'Test'".mrRemoveQuotes()).to.be.equal("Test:Test");
+  });
+});
