@@ -5,7 +5,10 @@ import {
   MrFirstLetterToUpperCase,
   MrIsBooleanString,
   MrIsEmptyString,
+  MrRemoveDuplicatedSpaces,
+  MrRemoveQuotes,
   MrReplaceAll,
+  MrSingleQuotesToDoubleQuotes,
   MrStringReplacer,
   StringReplacerObj,
 } from "../types/string";
@@ -49,6 +52,19 @@ const mrFirstLetterToUpperCase: MrFirstLetterToUpperCase = function (this: strin
   return this.slice(0, 1).toUpperCase() + this.slice(1);
 };
 
+const mrRemoveDuplicatedSpaces: MrRemoveDuplicatedSpaces = function (this: string): string {
+  return this.replace(/ {2,}/g, " ").trim();
+};
+
+const mrSingleQuotesToDoubleQuotes: MrSingleQuotesToDoubleQuotes = function (this: string): string {
+  // prettier-ignore
+  return this.mrReplaceAll("'", "\"");
+};
+
+const mrRemoveQuotes: MrRemoveQuotes = function (this: string): string {
+  return this.replace(/['"]/g, "");
+};
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const stringPrototypeMethods: [string, Function][] = [
   ["mrReplaceAll", mrReplaceAll],
@@ -57,6 +73,9 @@ const stringPrototypeMethods: [string, Function][] = [
   ["mrDecomposeText", mrDecomposeText],
   ["mrStringReplacer", mrStringReplacer],
   ["mrFirstLetterToUpperCase", mrFirstLetterToUpperCase],
+  ["mrRemoveDuplicatedSpaces", mrRemoveDuplicatedSpaces],
+  ["mrSingleQuotesToDoubleQuotes", mrSingleQuotesToDoubleQuotes],
+  ["mrRemoveQuotes", mrRemoveQuotes],
 ];
 
 for (const [name, fn] of stringPrototypeMethods) {

@@ -12,6 +12,12 @@ declare global {
     mrStringReplacer: MrStringReplacer;
     /** Converts the first letter of the string to uppercase. */
     mrFirstLetterToUpperCase: MrFirstLetterToUpperCase;
+    /** Removes duplicate spaces from the string and trims it. */
+    mrRemoveDuplicatedSpaces: MrRemoveDuplicatedSpaces;
+    /** Replaces all single quotes in the string with double quotes. */
+    mrSingleQuotesToDoubleQuotes: MrSingleQuotesToDoubleQuotes;
+    /** Removes all single and double quotes from the string. */
+    mrRemoveQuotes: MrRemoveQuotes;
   }
 }
 
@@ -21,6 +27,9 @@ export type MrIsBooleanString = (this: string) => boolean;
 export type MrDecomposeText = (this: string, first: string, second: string) => DecomposeTextReturnType;
 export type MrStringReplacer = (this: string, valueToReplace: StringReplacerObj[]) => string;
 export type MrFirstLetterToUpperCase = (this: string) => string;
+export type MrRemoveDuplicatedSpaces = (this: string) => string;
+export type MrSingleQuotesToDoubleQuotes = (this: string) => string;
+export type MrRemoveQuotes = (this: string) => string;
 
 export interface DecomposeTextReturnType {
   startIndex: number;
