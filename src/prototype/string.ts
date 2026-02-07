@@ -8,6 +8,7 @@ import {
   MrRemoveDuplicatedSpaces,
   MrRemoveQuotes,
   MrReplaceAll,
+  MrSingleQuotesToDoubleQuotes,
   MrStringReplacer,
   StringReplacerObj,
 } from "../types/string";
@@ -52,10 +53,10 @@ const mrFirstLetterToUpperCase: MrFirstLetterToUpperCase = function (this: strin
 };
 
 const mrRemoveDuplicatedSpaces: MrRemoveDuplicatedSpaces = function (this: string): string {
-  return this.replace(/\s+/g, " ").trim();
+  return this.replace(/ {2,}/g, " ").trim();
 };
 
-const mrSingleQuotesToDoubleQuotes: MrReplaceAll = function (this: string): string {
+const mrSingleQuotesToDoubleQuotes: MrSingleQuotesToDoubleQuotes = function (this: string): string {
   // prettier-ignore
   return this.mrReplaceAll("'", "\"");
 };

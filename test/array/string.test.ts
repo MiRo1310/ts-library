@@ -138,7 +138,7 @@ it("should check fistLetterToUpperCase", () => {
 });
 
 describe("remove duplicated spaces", () => {
-  it("should return do nothing is not exist", () => {
+  it("should do nothing if there are no duplicate spaces", () => {
     expect("Test".mrRemoveDuplicatedSpaces()).to.be.equal("Test");
   });
 
@@ -146,13 +146,13 @@ describe("remove duplicated spaces", () => {
     expect(" Test  Test   ".mrRemoveDuplicatedSpaces()).to.be.equal("Test Test");
   });
 
-  it("should trim and remove duplicated spaces", () => {
+  it("should trim and remove duplicated spaces with only one word", () => {
     expect("  Test   ".mrRemoveDuplicatedSpaces()).to.be.equal("Test");
   });
 });
 
 describe("single quotes to double quotes", () => {
-  it("should return do nothing is not exist", () => {
+  it("should do nothing when there are no single quotes", () => {
     expect("Test".mrSingleQuotesToDoubleQuotes()).to.be.equal("Test");
   });
 
@@ -168,7 +168,7 @@ describe("single quotes to double quotes", () => {
 });
 
 describe("remove quotes", () => {
-  it("should return do nothing is not exist", () => {
+  it("should do nothing when there are no quotes", () => {
     expect("Test".mrRemoveQuotes()).to.be.equal("Test");
   });
 
