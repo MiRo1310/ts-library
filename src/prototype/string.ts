@@ -56,7 +56,8 @@ const mrRemoveDuplicatedSpaces: MrRemoveDuplicatedSpaces = function (this: strin
 };
 
 const mrSingleQuotesToDoubleQuotes: MrReplaceAll = function (this: string): string {
-  return this.mrReplaceAll("'", '"');
+  // prettier-ignore
+  return this.mrReplaceAll("'", "\"");
 };
 
 const mrRemoveQuotes: MrRemoveQuotes = function (this: string): string {
