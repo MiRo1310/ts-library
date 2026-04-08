@@ -19,14 +19,14 @@
     "esbuild": "^0.28.0",
     "prettier": "3.8.1",
     "rollup": "^4.60.1",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "vitest": "^4.1.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^10.0.1",
     "@vitest/coverage-v8": "4.1.3",
     "cpx2": "^8.0.2",
-    "eslint": "^9.39.4",
+    "eslint": "^10.2.0",
     "globals": "^17.4.0",
     "jiti": "^2.6.1",
     "jsdom": "^29.0.2",
@@ -58,7 +58,6 @@
   "homepage": "https://github.com/MiRo1310/ts-library#readme",
   "resolutions": {
     "picomatch": "^4.0.4",
-    "brace-expansion": "^1.1.13",
     "flatted": "^3.4.2",
     "minimatch": "^10.2.3"
   }
